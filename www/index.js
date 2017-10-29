@@ -126,11 +126,21 @@ function add() {
   var lng;
 
   $.post("http://localhost:3000/pins", {
-    photo: "\\MobileProject\\img\\aa.jpg",
+    photo: "http://img.painaidii.com/images/20160629_3_1467191751_613818.jpg",
     lat: lat,
     lng: lng,
     description: $("#desc").val()
   });
   alert('complete');
   location.reload('index.html');
+}
+function deletePin(id) {
+  var url = "http://localhost:3000/pins";
+  $.ajax({
+      url: url + "/" + id,
+      method: "DELETE",
+      success: function (data, status, xhr) {
+          location.reload();
+      }
+  });
 }
